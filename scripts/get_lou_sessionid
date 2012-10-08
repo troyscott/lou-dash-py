@@ -1,0 +1,8 @@
+#!/bin/sh
+
+cat << ! > input
+mail=$1&password=$2
+---
+!
+lynx -source -accept_all_cookies -post_data https://www.lordofultima.com/en/user/login < input | grep 'name="sessionId" id="sessionId"' |  sed 's/.*value="\(.*\)\" \/>/\1/'
+

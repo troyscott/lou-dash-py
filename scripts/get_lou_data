@@ -1,0 +1,20 @@
+#!/bin/sh
+
+cat << ! > input
+mail=$1&password=$2
+---
+!
+
+# Get Data
+#lynx -source -accept_all_cookies -post_data https://www.lordofultima.com/en/user/login < input > data.txt 
+
+# SessionId
+grep 'name="sessionId" id="sessionId"' data.txt | sed 's/.*="\(.*\)".*/\1/' 
+
+# Production Server Url
+grep 'action="http://prodgame'  data.txt | sed 's/.*="\(.*\)\/.*">/\1/'
+
+
+# World Id
+grep 'value="World ' data.txt |  sed 's/.*="\(.*\)".*>/\1/'
+
