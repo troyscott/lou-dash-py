@@ -31,15 +31,14 @@ class Session():
         re_find_value = r".*name=\"sessionId\" id=\"sessionId\" value=\"(.*)\".*"
         return self.parse_session_data(find_line, re_find_value)
        
-
     def get_game_url(self):
         find_line = 'action="http://prodgame'
-        re_find_value = r"s/.*=\"\(.*\)\/.*\">/\1/"
+        re_find_value = r".*action=\"(.*)\/.*\".*"
         return self.parse_session_data(find_line, re_find_value)
     
     def get_world_id(self):
         find_line = 'value="World ' 
-        re_find_value = r"s/.*=\"\(.*\)\".*>/\1/"
+        re_find_value = r".*value=\"(.*)\".*"
         return self.parse_session_data(find_line, re_find_value)
     
     def parse_session_data(self, find_line, re_find_value ):
@@ -48,13 +47,7 @@ class Session():
         p2 = Popen(["grep", find_line], stdin=p1.stdout, stdout=PIPE)
         p1.stdout.close()
         line = p2.communicate()[0]
-        print line
         pattern = re.compile(re_find_value)
         result = pattern.match(line)
         return result.group(1)
     
-
-
-    
-            
-
