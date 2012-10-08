@@ -23,17 +23,6 @@ def get_server_info():
 
 
 if __name__ == "__main__":
-    print 'Create Session'
-    #u = raw_input('user:')
-    #p = raw_input('password:')
-    u = ''
-    p = ''
-    s = Session(u, p)
-    print 'Property:'
-    print s.get_session_id()
-    #print 'Method:'
-    #print s.get_game_url()
-
-
+    pass
 
 

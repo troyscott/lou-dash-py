@@ -1,2 +1,7 @@
 input
 *.pyc
+testlou.py
+*.swp
+*.bk
+*.bk1
+*.bk2
